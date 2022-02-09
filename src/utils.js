@@ -25,29 +25,6 @@ function buildSlackAttachments({ status, color, github }) {
   return [
     {
       color,
-      fields: [
-        {
-          title: 'Repo',
-          value: `<https://github.com/${owner}/${repo} | ${owner}/${repo}>`,
-          short: true,
-        },
-        {
-          title: 'Workflow',
-          value: `<https://github.com/${owner}/${repo}/actions/runs/${runId} | ${workflow}>`,
-          short: true,
-        },
-        {
-          title: 'Status',
-          value: status,
-          short: true,
-        },
-        referenceLink,
-        {
-          title: 'Event',
-          value: event,
-          short: true,
-        },
-      ],
       {
 			type: 'header',
 			text: {
