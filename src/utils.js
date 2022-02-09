@@ -48,6 +48,65 @@ function buildSlackAttachments({ status, color, github }) {
           short: true,
         },
       ],
+      {
+			type: 'header',
+			text: {
+				type: 'plain_text',
+				text: `<https://github.com/${owner}/${repo}/actions/runs/${runId} | ${workflow}>`,
+				emoji: true
+			}
+		},
+		{
+			type: 'section',
+			fields: [
+				{
+					type: 'mrkdwn',
+					text: `*Repo:*\n <https://github.com/${owner}/${repo} | ${owner}/${repo}>`
+				},
+				{
+					type: 'mrkdwn',
+					text: `*Branch:*\n <https://github.com/${owner}/${repo}/commit/${sha} | ${branch}>`
+				}
+			]
+		},
+		{
+			type: 'divider'
+		},
+		{
+			type: 'section',
+			text: {
+				type: 'mrkdwn',
+				text: status
+			},
+			accessory: {
+				type: 'button',
+				text: {
+					type: 'plain_text',
+					emoji: true,
+					text: 'View Site'
+				},
+				value: 'click_me_123'
+			}
+		},
+		{
+			type: 'section',
+			text: {
+				type: 'mrkdwn',
+				text: ':white_check_mark: *Tests Not Implemented*\n'
+			},
+			accessory: {
+				type: 'button',
+				text: {
+					type: 'plain_text',
+					emoji: true,
+					text: 'View Results'
+				},
+				value: 'click_me_123'
+			}
+		},
+		{
+			type: 'divider'
+		},
       footer_icon: 'https://github.githubassets.com/favicon.ico',
       footer: `<https://github.com/${owner}/${repo} | ${owner}/${repo}>`,
       ts: Math.floor(Date.now() / 1000),
